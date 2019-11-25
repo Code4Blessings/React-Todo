@@ -37,6 +37,18 @@ class App extends Component {
       todos: [...this.state.todos, newToDo]
     })
   }
+   handleChange = (event) => {
+     this.setState({
+       newTodo: event.target.value
+     })
+   }
+   handleSubmit = event => {
+     event.preventDefault();
+     this.props.addToDo(this.state.newTodo)
+     this.setState({
+       newTodo: ""
+     });
+   }
  
   render() {
     return (
@@ -45,7 +57,10 @@ class App extends Component {
            <h2>Welcome to your Todo App!</h2>
            <TodoList todos={this.state.todos} />
         </div>
-         <TodoForm addToDo={this.addToDo} />
+         <TodoForm 
+         onSubmit={this.handleSubmit}
+         onChange={this.handleChange}
+         addToDo={this.addToDo} />
       </div>
     );
   }
