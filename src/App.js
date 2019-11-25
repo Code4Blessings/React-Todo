@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+import './App.css';
 
  // you will need a place to store your state in this component.
  // design `App` to be the parent component of your application.
@@ -42,13 +43,13 @@ class App extends Component {
     return (
       <div className="App">
         <div className="header">
-           <h2>Welcome to your Todo App!</h2>
-           <TodoList todos={this.state.todos} />
+           <h2>Welcome To Your Todo App!</h2>
+            <TodoForm 
+            onSubmit={this.handleSubmit}
+            onChange={this.handleChange}
+            addToDo={this.addToDo} />
         </div>
-         <TodoForm 
-         onSubmit={this.handleSubmit}
-         onChange={this.handleChange}
-         addToDo={this.addToDo} />
+        <TodoList todos={this.state.todos} />
       </div>
     );
   }
