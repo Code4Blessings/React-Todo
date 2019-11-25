@@ -37,18 +37,6 @@ class App extends Component {
       todos: [...this.state.todos, newToDo]
     })
   }
-   handleChange = (event) => {
-     this.setState({
-       newTodo: event.target.value
-     })
-   }
-   handleSubmit = event => {
-     event.preventDefault();
-     this.props.addToDo(this.state.newTodo)
-     this.setState({
-       newTodo: ""
-     });
-   }
  
   render() {
     return (
