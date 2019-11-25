@@ -7,13 +7,27 @@ class TodoForm extends Component {
             newTodo: ""
         }
     }
+    handleChange = (event) => {
+        this.setState({
+            newTodo: event.target.value
+        })
+    }
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.addToDo(this.state.newTodo)
+        this.setState({ newTodo: ""});
+    }
+
     render() {
         return (
-           <form>
+           <form onSubmit={this.handleSubmit}>
                 <label htmlFor="task">Task:
-                   <input type="text" placeholder="task" />
+                   <input 
+                   type="text" 
+                   placeholder="task"
+                   value={this.state.newTodo} 
+                   onChange={this.handleChange} />
                 </label>
-                <button>Clear</button>
                 <button type="submit">Submit</button>
            </form>
         );

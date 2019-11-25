@@ -12,6 +12,7 @@ const TodoList = props => {
                     key={todo.id} 
                     todo={todo} />
             ))}
+             <button>Clear</button>
         </div>
     )
 }
