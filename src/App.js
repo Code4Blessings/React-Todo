@@ -24,7 +24,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos: list
+      todos: []
     };
   }
 
@@ -38,6 +38,21 @@ class App extends Component {
       todos: [...this.state.todos, newToDo]
     })
   }
+
+  toggleComplete = id => {
+    this.setState({
+      todos: this.state.todos.map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+            completed: !task.completed
+          };
+        } else {
+          return task;
+        }
+      })
+    });
+  };
  
   render() {
     return (
@@ -45,11 +60,12 @@ class App extends Component {
         <div className="header">
            <h2>Welcome To Your Todo App!</h2>
             <TodoForm 
-            onSubmit={this.handleSubmit}
-            onChange={this.handleChange}
             addToDo={this.addToDo} />
         </div>
-        <TodoList todos={this.state.todos} />
+        {console.log(this.state)}
+        <TodoList 
+        todos={this.state.todos} 
+        toggleComplete={this.toggleComplete} />
       </div>
     );
   }
