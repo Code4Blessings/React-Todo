@@ -28,11 +28,11 @@ class TodoForm extends Component {
                    placeholder="task"
                    value={this.state.newTodo} 
                    onChange={this.handleChange}
-                   
                     />
                 </label>
                 <button type="submit">ADD</button>
            </form>
+           
         );
     }
 }

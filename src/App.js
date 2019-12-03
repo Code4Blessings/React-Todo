@@ -7,18 +7,7 @@ import './App.css';
  // design `App` to be the parent component of your application.
  // this component is going to take care of state, and any change handlers you need to work with your state
 
-const list = [
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  }
-];
+
 
 class App extends Component {
   constructor() {
@@ -53,6 +42,14 @@ class App extends Component {
       })
     });
   };
+
+  clearCompleted = () => {
+    this.setState({
+      todos: this.state.todos.filter(task => !task.completed)
+    })
+  }
+    
+
  
   render() {
     return (
@@ -62,10 +59,10 @@ class App extends Component {
             <TodoForm 
             addToDo={this.addToDo} />
         </div>
-        {console.log(this.state)}
         <TodoList 
         todos={this.state.todos} 
-        toggleComplete={this.toggleComplete} />
+        toggleComplete={this.toggleComplete} 
+        clearCompleted={this.clearCompleted} />
       </div>
     );
   }
